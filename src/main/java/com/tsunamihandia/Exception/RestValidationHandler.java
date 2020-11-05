@@ -1,5 +1,8 @@
 package com.tsunamihandia.Exception;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,9 +18,17 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @ControllerAdvice
 public class RestValidationHandler {
+
+    private MessageSource messageSource;
+
+    @Autowired
+    public RestValidationHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     // method to handle validation error
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -61,9 +72,11 @@ public class RestValidationHandler {
         FieldValidationError fieldValidationError = new FieldValidationError();
 
         if (fieldError != null) {
+            Locale currentLocale = LocaleContextHolder.getLocale();
+            String msg = messageSource.getMessage(fieldError.getDefaultMessage(), null, currentLocale);
             fieldValidationError.setFiled(fieldError.getField());
             fieldValidationError.setType(TrayIcon.MessageType.ERROR);
-            fieldValidationError.setMessage(fieldError.getDefaultMessage());
+            fieldValidationError.setMessage(msg);
         }
 
         return fieldValidationError;
