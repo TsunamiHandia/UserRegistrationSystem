@@ -1,9 +1,8 @@
-package com.tsunamihandia.Rest;
+package com.tsunamihandia.rest;
 
-import com.tsunamihandia.Exception.CustomErrorType;
+import com.tsunamihandia.exception.CustomErrorType;
 import com.tsunamihandia.dto.UsersDTO;
 import com.tsunamihandia.repository.UserJpaRepository;
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

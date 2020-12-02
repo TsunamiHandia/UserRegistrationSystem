@@ -1,4 +1,4 @@
-package com.tsunamihandia.Exception;
+package com.tsunamihandia.exception;
 
 import java.util.HashMap;
 import java.util.List;
