@@ -31,6 +31,15 @@ public class UsersDTO {
     @Column(name = "EMAIL")
     private String email;
 
+    public UsersDTO() {
+    }
+
+    public UsersDTO(@NotEmpty(message = "error.name.empty") @Length(max = 50, message = "error.name.length") String name, @NotEmpty(message = "error.address.empty") @Length(max = 150, message = "error.address.length") String address, @Email(message = "error.email.email") @NotEmpty(message = "error.email.empty") @Length(max = 80, message = "error.email.length") String email) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

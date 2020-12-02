@@ -42,7 +42,7 @@ public class RestValidationHandler {
         fieldValidationErrorDetails.setError_timeStamp(new Date().getTime());
         fieldValidationErrorDetails.setError_status(HttpStatus.BAD_REQUEST.value());
         fieldValidationErrorDetails.setError_title("Field Validation Error");
-        fieldValidationErrorDetails.setError_detail("Inut Field Validation Failed");
+        fieldValidationErrorDetails.setError_detail("Input Field Validation Failed");
         fieldValidationErrorDetails.setError_developer_Message(methodArgumentNotValidException.getClass().getName());
         fieldValidationErrorDetails.setError_path(request.getRequestURI());
 
